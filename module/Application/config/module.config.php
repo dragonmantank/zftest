@@ -19,6 +19,21 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'index'
+                            ),
+                        ),
+                    ),
+                ),
             ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
@@ -31,7 +46,7 @@ return array(
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'index',
+                        'action'        => 'copyright',
                     ),
                 ),
                 'may_terminate' => true,
@@ -45,6 +60,7 @@ return array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
+                                'controller' => 'index'
                             ),
                         ),
                     ),

@@ -13,6 +13,22 @@ use PHPUnit_Framework_TestCase;
 
 class IndexControllerTest extends \PHPUnit_Framework_TestCase
 {
+    protected $controller;
+    protected $request;
+    protected $response;
+    protected $routeMatch;
+    protected $event;
+
+    public function setUp()
+    {
+        $this->controller = new IndexController();
+        $this->request = new Request();
+        $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+        $this->event = new MvcEvent();
+        $this->event->setRouteMatch($this->routeMatch);
+        $this->controller->setEvent($this->event);
+    }
+
    public function testContactActionCanBeAccessed()
     {
         $this->routeMatch->setParam('action', 'contact');
